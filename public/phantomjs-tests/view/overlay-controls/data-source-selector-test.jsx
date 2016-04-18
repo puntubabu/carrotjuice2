@@ -1,6 +1,6 @@
 var $ = require('jquery');
 var assert = require('assert');
-var DataSourceSelector = require('../../../view/overlay-controls/data-source-selector.jsx');
+var DataSourceSelector = require('../../../view/overlay-controls/data-source-selector');
 var Q = require('q');
 var React = require('react');  // required to be in scope post-JSX compilation
 var ReactDOM = require('react-dom');

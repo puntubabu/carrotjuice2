@@ -2,9 +2,9 @@
  * Combinators/modifiers for views/JSX elements.
  */
 
-var React = require('react');
+import React from 'react'
 
-var flexbox_stack = function(elements) {
+const flexbox_stack = (elements) => {
   return <div style={{
     display: 'flex',
     flexDirection: 'column',
@@ -15,6 +15,6 @@ var flexbox_stack = function(elements) {
   </div>;
 };
 
-module.exports = {
-  flexbox_stack: flexbox_stack
+export {
+  flexbox_stack as flexbox_stack
 };

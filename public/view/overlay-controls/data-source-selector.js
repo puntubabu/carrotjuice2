@@ -1,28 +1,28 @@
-var React = require('react');
-require('./data-source-selector.css');
+import React, { Component } from 'react'
+import './data-source-selector.css'
 
-var DataSourceSelector = React.createClass({
-  display_name: function(name) {
+export default class DataSourceSelector extends Component{
+  display_name = (name) => {
     return this.props.selected_layers.display_name(name);
-  },
+  }
 
-  create_opacity_slider: function() {
+  create_opacity_slider = () => {
     return <input id="data-source-opacity" type="range" min="0" max="1" step="0.1"
                   value={this.props.selected_layers.base_opacity} onChange={(function(event) {
                     this.props.selected_layers.set_base_opacity(event.target.value);
                   }).bind(this)} />;
-  },
+  }
 
-  createBaseLayerOption: function(layer_name) {
+  createBaseLayerOption = (layer_name) => {
     return <li key={layer_name}>
       <a href="#" onClick={
         (function() { this.props.selected_layers.set_base_layer(layer_name); }).bind(this)
       }>{this.display_name(layer_name)}</a>
     </li>;
-  },
+  }
 
   // TODO(jetpack): make this a nice switch thingy instead.
-  createOverlayLayerToggle: function(layer_name) {
+  createOverlayLayerToggle = (layer_name) => {
     return <div key={layer_name}>
       {this.display_name(layer_name)}:
       <button type="button" className="btn btn-primary" data-toggle="button" aria-pressed="false"
@@ -32,9 +32,9 @@ var DataSourceSelector = React.createClass({
         {this.props.selected_layers.overlay_layers_status[layer_name] ? 'On' : 'Off'}
       </button>
     </div>;
-  },
+  }
 
-  render: function() {
+  render() {
     return <div className="data-source-selector">
       <div>Opacity: {this.create_opacity_slider()}</div>
       Data source:
@@ -54,6 +54,4 @@ var DataSourceSelector = React.createClass({
       </div>
     </div>;
   }
-});
-
-module.exports = DataSourceSelector;
+}

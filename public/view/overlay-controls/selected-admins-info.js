@@ -1,21 +1,24 @@
-var React = require('react');
-var _ = require('lodash');
+import React, { Component } from 'react';
+import _ from 'lodash'
+import './selected-admins-info.css'
 
-require('./selected-admins-info.css');
+export default class SelectedAdminsInfo extends Component {
 
-var SelectedAdminsInfo = React.createClass({
-  no_data: <em>No data.</em>,
+  constructor(props){
+    super(props)
+    this.no_data = <em>No data.</em>
+  }
 
-  commify: function(i) {
+  commify = (i) => {
     return Math.round(i).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-  },
+  }
 
-  population_figure: function(x) {
+  population_figure = (x) => {
     if (!x) { return this.no_data; }
     return this.commify(x);
-  },
+  }
 
-  weather_data: function(admin_code) {
+  weather_data = (admin_code) => {
     var weather_data = this.props.admin_details.weather_data_store.weather_data_for_date_and_admin(
       this.props.selected_date.current_day, admin_code);
     if (_.has(weather_data, 'temp_mean')) {
@@ -23,9 +26,9 @@ var SelectedAdminsInfo = React.createClass({
     } else {
       return this.no_data;
     }
-  },
+  }
 
-  case_data: function(admin_code) {
+  case_data = (admin_code) => {
     var epi_display_strings = this.props.admin_details.get_epi_data_display_strings(
       admin_code, this.props.selected_date.current_day);
     if (epi_display_strings) {
@@ -35,9 +38,9 @@ var SelectedAdminsInfo = React.createClass({
     } else {
       return this.no_data;
     }
-  },
+  }
 
-  create_admin_panel: function(admin) {
+  create_admin_panel = (admin) => {
     // TODO(jetpack): add mosquito data. probably remove area?
     return <div className="selected-admin-info" key={admin.name}>
       <h3>{admin.name}</h3>
@@ -46,9 +49,9 @@ var SelectedAdminsInfo = React.createClass({
       <div>Weather: {this.weather_data(admin.admin_code)}</div>
       <div>Case data: {this.case_data(admin.admin_code)}</div>
     </div>;
-  },
+  }
 
-  render: function() {
+  render() {
     var selected_admins_data = this.props.admin_details.get_selected_admins_data();
     if (_.isEmpty(selected_admins_data)) {
       return <div className="selected-admins-info">
@@ -62,6 +65,4 @@ var SelectedAdminsInfo = React.createClass({
       </div>;
     }
   }
-});
-
-module.exports = SelectedAdminsInfo;
+}

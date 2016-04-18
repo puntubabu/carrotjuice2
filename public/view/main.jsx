@@ -1,14 +1,14 @@
 /**
  * this is the main entrypoint for our single-page app
  */
-var React = require('react');
+import React from 'react';
 
 // Views
-var DateSelectionBar = require('./date-selection-bar.jsx');
-var LeafletMap = require('./leaflet-map.jsx');
-var LoadingStatusView = require('./loading-status.jsx');
-var OverlayControlsBox = require('./overlay-controls/overlay-controls-box.jsx');
-var ViewUtil = require('./view-util.jsx');
+import DateSelectionBar from './date-selection-bar'
+import LeafletMap from './leaflet-map'
+import LoadingStatusView from './loading-status'
+import OverlayControlsBox from './overlay-controls/overlay-controls-box'
+import * as ViewUtil from './view-util'
 
 // Event emitters
 var SelectionEvents = require('../event-emitters/selection-events.js');

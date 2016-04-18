@@ -15,11 +15,9 @@ module.exports = {
       {test: /\.css$/, loader: "style!css"},
       {test: /\.json$/, loader: "json"},
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         loader: "babel-loader",
-        query: {
-          presets: ['react']
-        }
+        exclude: /(node_modules|bower_components)/
       },
 
       // Needed for the css-loader when

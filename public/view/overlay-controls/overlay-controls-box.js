@@ -1,12 +1,17 @@
-var React = require('react');
-var AdminSearch = require('./admin-search.jsx');
-var CountrySelector = require('./country-selector.jsx');
-var DataSourceSelector = require('./data-source-selector.jsx');
-var SelectedAdminsInfo = require('./selected-admins-info.jsx');
-require('./overlay-controls-box.css');
+import React, { Component } from 'react'
+import AdminSearch from './admin-search.js'
+import CountrySelector from './country-selector'
+import DataSourceSelector from './data-source-selector'
+import SelectedAdminsInfo from './selected-admins-info'
+import './overlay-controls-box.css'
 
-var OverlayControlsBox = React.createClass({
-  render: function() {
+export default class OverlayControlsBox extends Component {
+
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
     return <div className="overlay-controls">
       <div className="overlay-controls-section">
         <CountrySelector
@@ -34,6 +39,4 @@ var OverlayControlsBox = React.createClass({
       </div>
     </div>;
   }
-});
-
-module.exports = OverlayControlsBox;
+}
